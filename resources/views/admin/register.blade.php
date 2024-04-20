@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Multi Step Form | CodingNepal</title>
+    <title>Register | GoodGirls</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
@@ -197,7 +197,7 @@
 </head>
 <body>
 <div class="container">
-    <header>Regist Form</header>
+    <header>Isi Data Mahasiswa</header>
     <div class="progress-bar">
         <div class="step">
             <p>
@@ -305,20 +305,24 @@
                 </div>
             </div>
             <div class="page">
-                <div class="title">
-                    Login Details:
+                <div class="field">
+                    <div class="label">
+                        Agama
+                    </div>
+                    <select>
+                        <option>Islam</option>
+                        <option>Kristen Protestan</option>
+                        <option>Katolik</option>
+                        <option>Hindu</option>
+                        <option>Buddha</option>
+                    </select>
+
                 </div>
                 <div class="field">
                     <div class="label">
-                        Username
+                        Alamat
                     </div>
-                    <input type="text">
-                </div>
-                <div class="field">
-                    <div class="label">
-                        Password
-                    </div>
-                    <input type="password">
+                    <input type="Text">
                 </div>
                 <div class="field btns">
                     <button class="prev-3 prev">Previous</button>

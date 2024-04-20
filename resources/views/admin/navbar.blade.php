@@ -294,7 +294,8 @@
             color: var(--text-color);
         }
     </style>
-    <title>{{$title}}</title>
+    <title>GoodGirls</title>
+    {{--    <title>{{$title}}</title>--}}
 </head>
 <body>
 <nav class="sidebar close">
@@ -324,33 +325,22 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{{ route('register') }}" >
                         <i class='bx bx-bar-chart-alt-2 icon' ></i>
-                        <span class="text nav-text">Revenue</span>
+                        <span class="text nav-text">Register</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
-                        <i class='bx bx-bell icon'></i>
-                        <span class="text nav-text">Notifications</span>
+                    <a href="{{ route('data-polling') }}">
+                        <i class='bx bx-data icon' ></i>
+                        <span class="text nav-text">Poling</span>
                     </a>
                 </li>
                 <li class="nav-link">
+                    {{--                      <a href=""{{ route('courses.index') }}">--}}
                     <a href="#">
-                        <i class='bx bx-pie-chart-alt icon' ></i>
-                        <span class="text nav-text">Analytics</span>
-                    </a>
-                </li>
-                <li class="nav-link">
-                    <a href="#">
-                        <i class='bx bx-heart icon' ></i>
-                        <span class="text nav-text">Likes</span>
-                    </a>
-                </li>
-                <li class="nav-link">
-                    <a href="#">
-                        <i class='bx bx-wallet icon' ></i>
-                        <span class="text nav-text">Wallets</span>
+                        <i class='bx bx-category icon' ></i>
+                        <span class="text nav-text">View Course</span>
                     </a>
                 </li>
             </ul>
@@ -382,13 +372,23 @@
                     <span class="switch"></span>
                 </div>
             </li>
+            <div class="navbar">
+                <!-- Navbar content -->
+            </div>
+
 
 
         </div>
     </div>
+    @if(Auth::check() && Auth::user()->isAdmin)
+        <!-- Tautan ke halaman admin -->
+        <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+    @endif
+
 </nav>
 <section class="home">
     <div class="text">Dashboard Sidebar</div>
+
 </section>
 <script>
     const body = document.querySelector('body'),
@@ -431,4 +431,3 @@
 -->
 </body>
 </html>
-

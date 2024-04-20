@@ -25,6 +25,7 @@
             background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
         }
+
         ::selection{
             background: #4158d0;
             color: #fff;
@@ -145,13 +146,14 @@
     <div class="title">
         Login Form
     </div>
-    <form action="#">
+    <form method="POST" action="{{ route('admin.dashboard') }}">
+        @csrf
         <div class="field">
-            <input type="text" required>
+            <input type="text" name="Email Address" id="Email Address" required>
             <label>Email Address</label>
         </div>
         <div class="field">
-            <input type="password" required>
+            <input type="text" name="Password" id="Password" required>
             <label>Password</label>
         </div>
         <div class="field">
@@ -168,7 +170,7 @@
                 <label for="remember-me">Remember me</label>
             </div>
             <div class="pass-link">
-                <a href="#">Forgot password?</a>
+                <a href="{{ route('forgot-password') }}">Forgot password?</a>
             </div>
         </div>
         <div class="field">

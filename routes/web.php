@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\DataPollingController;
+use App\Http\Controllers\Admin\DataPollingController;
+
 
 
 // Rute untuk menampilkan halaman welcome
@@ -56,5 +57,10 @@ Route::get('updatematkul/{KodeMK}', [DataPollingController::class, 'updatematkul
 Route::put('/update-matakuliah/{KodeMK}', [DataPollingController::class, 'updateMatakuliah'])->name('updateMatakuliah');
 
 
-
+Route::get('/admin/data-polling', [DataPollingController::class, 'index'])->name('admin.data-polling');
+Route::post('/admin/data-polling/store', [DataPollingController::class, 'store'])->name('admin.data-polling.store');
+Route::get('/admin/view-course', [DataPollingController::class, 'showViewCourse'])->name('admin.view-course.index');
+Route::post('/admin/data-polling/delete', [DataPollingController::class, 'delete'])->name('admin.data-polling.delete');
+Route::get('/admin/data-polling/edit/{KodeMK}', [DataPollingController::class, 'updatematkul'])->name('admin.data-polling.edit');
+Route::post('/admin/data-polling/update/{KodeMK}', [DataPollingController::class, 'updateMatakuliah'])->name('admin.data-polling.update');
 

@@ -8,15 +8,9 @@ use Illuminate\Support\Facades\Redirect;
 
 class DataPollingController extends Controller
 {
-    /**
-     * Display the view for adding a new course.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        // Tambahkan kode untuk mengambil data matakuliah jika diperlukan
-        return view('/admin/data-polling');
+        return view('admin.data-polling');
     }
 
     public function store(Request $request)
@@ -39,8 +33,9 @@ class DataPollingController extends Controller
     public function showViewCourse()
     {
         $matakuliah = Matakuliah::all();
-        return view('/view-course', compact('matakuliah'));
+        return view('view-course', compact('matakuliah'));
     }
+
     public function delete(Request $request)
     {
         $kodeMk = $request->input('kodeMk');
@@ -56,18 +51,18 @@ class DataPollingController extends Controller
 
     public function updatematkul(Matakuliah $KodeMK)
     {
-        return view('/update-matakuliah', [
-            'matakuliahs' => $KodeMK
+        return view('update-matakuliah', [
+            'matakuliah' => $KodeMK
         ]);
     }
 
-    public function updateMatakuliah(Request $request,Matakuliah $KodeMK)
+    public function updateMatakuliah(Request $request, Matakuliah $KodeMK)
     {
-        $validatedData = validator($request->all(),[
+        $validatedData = $request->validate([
             'Kode_MK' => 'required',
             'Mata_Kuliah' => 'required|max:100',
             'Jml_sks' => 'required|numeric'
-        ])-> validate();
+        ]);
 
         $KodeMK->Mata_Kuliah = $validatedData['Mata_Kuliah'];
         $KodeMK->Jml_sks = $validatedData['Jml_sks'];

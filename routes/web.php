@@ -48,9 +48,13 @@ Route::get('/data-polling', function () {
 Route::get('/data-polling', [DataPollingController::class, 'index'])->name('data-polling.index');
 Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
 Route::post('/data-polling/delete', 'DataPollingController@delete')->name('data-polling.delete');
-Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah');
+
 
 Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->name('view-course.index');
+
+Route::get('updatematkul/{KodeMK}', [DataPollingController::class, 'updatematkul'])->name('updatematkul');
+Route::put('/update-matakuliah/{KodeMK}', [DataPollingController::class, 'updateMatakuliah'])->name('updateMatakuliah');
+
 
 
 

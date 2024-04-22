@@ -146,7 +146,7 @@
     <div class="title">
         Login Form
     </div>
-    <form method="POST" action="{{ route('admin.dashboard') }}">
+    <form method="POST" action="{{ route('admin.navbar') }}">
         @csrf
         <div class="field">
             <input type="text" name="Email Address" id="Email Address" required>

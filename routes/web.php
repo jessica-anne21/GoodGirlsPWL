@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Admin\DataPollingController;
-
+use App\Http\Controllers\DataPollingController;
 
 
 // Rute untuk menampilkan halaman welcome
@@ -47,20 +46,9 @@ Route::get('/data-polling', function () {
 
 
 Route::get('/data-polling', [DataPollingController::class, 'index'])->name('data-polling.index');
-Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
-Route::post('/data-polling/delete', 'DataPollingController@delete')->name('data-polling.delete');
-
-
+//Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
+//Route::post('/data-polling/delete', [DataPollingController::class, 'delete'])->name('data-polling.delete');
 Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->name('view-course.index');
-
-Route::get('updatematkul/{KodeMK}', [DataPollingController::class, 'updatematkul'])->name('updatematkul');
-Route::put('/update-matakuliah/{KodeMK}', [DataPollingController::class, 'updateMatakuliah'])->name('updateMatakuliah');
-
-
-Route::get('/admin/data-polling', [DataPollingController::class, 'index'])->name('admin.data-polling');
-Route::post('/admin/data-polling/store', [DataPollingController::class, 'store'])->name('admin.data-polling.store');
-Route::get('/admin/view-course', [DataPollingController::class, 'showViewCourse'])->name('admin.view-course.index');
-Route::post('/admin/data-polling/delete', [DataPollingController::class, 'delete'])->name('admin.data-polling.delete');
-Route::get('/admin/data-polling/edit/{KodeMK}', [DataPollingController::class, 'updatematkul'])->name('admin.data-polling.edit');
-Route::post('/admin/data-polling/update/{KodeMK}', [DataPollingController::class, 'updateMatakuliah'])->name('admin.data-polling.update');
-
+//Route::get('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updatematkul'])->name('update-matakuliah');
+//Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah.update');
+//

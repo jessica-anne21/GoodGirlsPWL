@@ -331,7 +331,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="{{ route('data-polling.index') }}">
+                    <a href="data-polling.index">
                         <i class='bx bx-data icon' ></i>
                         <span class="text nav-text">Poling</span>
                     </a>

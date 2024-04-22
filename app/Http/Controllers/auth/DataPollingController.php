@@ -10,6 +10,7 @@ class DataPollingController extends Controller
 {
     public function index()
     {
+        dd('Metode index dijalankan!');
         return view('admin.data-polling');
     }
 
@@ -56,18 +57,22 @@ class DataPollingController extends Controller
         ]);
     }
 
-    public function updateMatakuliah(Request $request, Matakuliah $KodeMK)
+    public function updateMatakuliah(Request $request, $kodeMk)
     {
         $validatedData = $request->validate([
-            'Kode_MK' => 'required',
             'Mata_Kuliah' => 'required|max:100',
             'Jml_sks' => 'required|numeric'
         ]);
 
-        $KodeMK->Mata_Kuliah = $validatedData['Mata_Kuliah'];
-        $KodeMK->Jml_sks = $validatedData['Jml_sks'];
-        $KodeMK->save();
+        $matakuliah = Matakuliah::where('Kode_MK', $kodeMk)->first();
+        if ($matakuliah) {
+            $matakuliah->Mata_Kuliah = $validatedData['Mata_Kuliah'];
+            $matakuliah->Jml_sks = $validatedData['Jml_sks'];
+            $matakuliah->save();
 
-        return response()->json(['success' => 'Data polling berhasil diedit.']);
+            return response()->json(['success' => 'Data polling berhasil diedit.']);
+        } else {
+            return response()->json(['error' => 'Matakuliah tidak ditemukan.'], 404);
+        }
     }
 }

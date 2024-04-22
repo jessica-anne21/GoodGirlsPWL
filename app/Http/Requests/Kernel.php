@@ -9,7 +9,8 @@ class Kernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'checkRole' => \App\Http\Middleware\role::class, // Tambahkan middleware baru di sini
+        'checkRole' => \App\Http\Middleware\role::class,
+//        'admin' => \App\Http\Middleware\AdminMiddleware::class,// Tambahkan middleware baru di sini
     ];
 
 }

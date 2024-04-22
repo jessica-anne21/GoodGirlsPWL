@@ -30,6 +30,10 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/admin/dashboard', [YourController::class, 'dashboard'])
     ->middleware('auth', 'checkRole:admin');
 
+//
+//Route::group(['middleware' => 'admin'], function () {
+//    Auth::routes(); // This will apply the 'admin' middleware to all Auth routes including registration.
+//});
 
 
 //Route::get('/', function () {

@@ -33,9 +33,9 @@
         }
 
         .card-body {
-            background-color: rgba(255, 255, 255, 0.5); /* Form background transparan */
-            border-radius: 10px; /* Untuk memberi sedikit radius pada border */
-            padding: 20px; /* Jarak antara konten dan pinggiran form */
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 20px;
             backdrop-filter: blur(50px);
         }
 
@@ -49,7 +49,7 @@
             border-radius: 5px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(50px);
-            background-color: rgba(255, 255, 255, 0.5); /* Putih setengah transparan */
+            background-color: rgba(255, 255, 255, 0.5);
         }
 
 

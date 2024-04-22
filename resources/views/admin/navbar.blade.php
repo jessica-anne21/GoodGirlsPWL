@@ -105,7 +105,7 @@
         .sidebar.close .text{
             opacity: 0;
         }
-        /* =========================== */
+
         .sidebar header{
             position: relative;
         }
@@ -295,7 +295,7 @@
         }
     </style>
     <title>GoodGirls</title>
-    {{--    <title>{{$title}}</title>--}}
+
 </head>
 <body>
 <nav class="sidebar close">
@@ -331,14 +331,13 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="{{ route('data-polling') }}">
+                    <a href="{{ route('data-polling.index') }}">
                         <i class='bx bx-data icon' ></i>
                         <span class="text nav-text">Poling</span>
                     </a>
                 </li>
                 <li class="nav-link">
-                    {{--                      <a href=""{{ route('courses.index') }}">--}}
-                    <a href="#">
+                    <a href="{{ route('view-course.index') }}">
                         <i class='bx bx-category icon' ></i>
                         <span class="text nav-text">View Course</span>
                     </a>
@@ -352,16 +351,6 @@
                     <span class="text nav-text">Logout</span>
                 </a>
             </li>
-            {{--              <li class="">--}}
-            {{--                  <form id="logout-form" action="{{ route('logout') }}" method="POST">--}}
-            {{--                      @csrf--}}
-            {{--                      <a href="#" onclick="document.getElementById('logout-form').submit();">--}}
-            {{--                          <i class='bx bx-log-out icon' ></i>--}}
-            {{--                          <span class="text nav-text">Logout</span>--}}
-            {{--                      </a>--}}
-            {{--                  </form>--}}
-            {{--              </li>--}}
-
             <li class="mode">
                 <div class="sun-moon">
                     <i class='bx bx-moon icon moon'></i>
@@ -381,7 +370,6 @@
         </div>
     </div>
     @if(Auth::check() && Auth::user()->isAdmin)
-        <!-- Tautan ke halaman admin -->
         <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
     @endif
 
@@ -419,15 +407,9 @@
     });
 </script>
 
-<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
--->
 </body>
 </html>

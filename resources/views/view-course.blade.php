@@ -80,19 +80,24 @@
                     <th scope="col">Kode MK</th>
                     <th scope="col">Mata Kuliah</th>
                     <th scope="col">SKS</th>
+                    <th scope="col">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($matakuliah as $matakuliahs)
+                @foreach($matakuliah as $mk)
                     <tr>
-                        <td>{{ $matakuliahs->Kode_MK }}</td>
-                        <td>{{ $matakuliahs->Mata_Kuliah }}</td>
-                        <td>{{ $matakuliahs->Jml_sks }}</td>
+                        <td>{{ $mk->Kode_MK }}</td>
+                        <td>{{ $mk->Mata_Kuliah }}</td>
+                        <td>{{ $mk->Jml_sks }}</td>
                         <td>
-                            <a href = "{{ route('updatematkul', ['KodeMK' => $matakuliahs->Kode_MK])}}" role="button" class="btn btn-primary btn-edit bi bi-pencil mr-2">Edit</a>
-                            <button type="submit" class="btn btn-danger btn-delete" onclick="konfirmasiHapus('{{ $matakuliahs->Kode_MK }}')">
-                                <i class="bi bi-trash"></i> Hapus
-                            </button>
+                            <a href="{{ route('updatematkul', ['KodeMK' => $mk->Kode_MK]) }}" role="button" class="btn btn-primary btn-edit bi bi-pencil mr-2">Edit</a>
+                            <form method="POST" action="{{ route('data-polling.delete') }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                @csrf
+                                <input type="hidden" name="kodeMk" value="{{ $mk->Kode_MK }}">
+                                <button type="submit" class="btn btn-danger btn-delete" title="Hapus">
+                                    <i class="bi bi-trash"></i> Hapus
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

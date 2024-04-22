@@ -10,7 +10,6 @@ class DataPollingController extends Controller
 {
     public function index()
     {
-        dd('Metode index dijalankan!');
         return view('admin.data-polling');
     }
 

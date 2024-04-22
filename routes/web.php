@@ -45,10 +45,18 @@ Route::get('/data-polling', function () {
 
 
 
+// Rute untuk menampilkan halaman data-polling (form)
+//Route::get('/data-polling', 'DataPollingController@index')->name('data-polling.index');
+
 Route::get('/data-polling', [DataPollingController::class, 'index'])->name('data-polling.index');
-//Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
-//Route::post('/data-polling/delete', [DataPollingController::class, 'delete'])->name('data-polling.delete');
+Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
 Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->name('view-course.index');
-//Route::get('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updatematkul'])->name('update-matakuliah');
-//Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah.update');
-//
+Route::get('/updatematkul/{KodeMK}', [DataPollingController::class, 'updatematkul'])->name('updatematkul');
+Route::post('/delete-matakuliah', [DataPollingController::class, 'delete'])->name('data-polling.delete');
+Route::post('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah');
+
+////Route::post('/data-polling/delete', [DataPollingController::class, 'delete'])->name('data-polling.delete');
+Route::get('/view-course', 'DataPollingController@showViewCourse')->name('view-course.index');
+//////Route::get('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updatematkul'])->name('update-matakuliah');
+////Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah.update');
+////

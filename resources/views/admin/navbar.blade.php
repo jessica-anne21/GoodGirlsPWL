@@ -331,7 +331,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="data-polling.index">
+                    <a href="{{ route('data-polling.index') }}">
                         <i class='bx bx-data icon' ></i>
                         <span class="text nav-text">Poling</span>
                     </a>
@@ -351,7 +351,7 @@
                     <span class="text nav-text">Logout</span>
                 </a>
             </li>
-            <li class="mode">
+            <li class="mode"> lala baong bikin males
                 <div class="sun-moon">
                     <i class='bx bx-moon icon moon'></i>
                     <i class='bx bx-sun icon sun'></i>

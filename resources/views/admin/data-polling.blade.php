@@ -73,7 +73,7 @@
         <h1 class="content-title">Isi Data Polling</h1>
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{ route('data-polling.index') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('data-polling.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="kodeMk">Kode MK</label>

@@ -29,9 +29,9 @@ Route::get('/reset-password', function () {
     return view('auth.reset-password');
 })->name('reset-password');
 
-Route::post('/dashboard', 'MahasiswaController@index')->name('mahasiswa.dashboard');
+Route::get('/dashboard', 'MahasiswaController@index')->name('mahasiswa.dashboard');
 
-Route::post('/dashboard', function () {
+Route::get('/dashboard', function () {
     return view('admin.navbar');
 })->name('admin.dashboard');
 
@@ -40,19 +40,23 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::get('/data-polling', function () {
-    return view('admin.data-polling'); // Pastikan path view-nya sesuai dengan struktur direktori Anda
+    return view('admin.data-polling');
 })->name('data-polling');
 
 
-//Route::get('/data-polling', [DataPollingController::class, 'index'])->name('data-polling.index');
-//Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
 
-//Route::get('/data-polling', 'DataPollingController@index')->name('data-polling');
-//Route::get('/data-polling', [DataPollingController::class, 'index']);
-//Route::post('/data-polling/save', [DataPollingController::class, 'save'])->name('data-polling.save');
+Route::get('/data-polling', [DataPollingController::class, 'index'])->name('data-polling.index');
+Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
+Route::post('/data-polling/delete', 'DataPollingController@delete')->name('data-polling.delete');
 
-Route::post('/data-polling/save', [DataPollingController::class, 'store'])->name('data-polling.store');
-Route::post('/polling-detail', 'PollingDetailController@store')->name('polling-detail.store');
 
-Route::post('view-course/store', [ViewCourseController::class, 'store'])->name('view-course.store');
+Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->name('view-course.index');
+
+Route::get('updatematkul/{KodeMK}', [DataPollingController::class, 'updatematkul'])->name('updatematkul');
+Route::put('/update-matakuliah/{KodeMK}', [DataPollingController::class, 'updateMatakuliah'])->name('updateMatakuliah');
+
+
+
+
+
 

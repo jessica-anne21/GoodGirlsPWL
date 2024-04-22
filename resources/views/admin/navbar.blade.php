@@ -293,6 +293,88 @@
         body.dark .home .text{
             color: var(--text-color);
         }
+
+        /* calendar */
+
+        html {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-sizing: border-box;
+            font-size: 62.5%;
+        }
+        html * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: grid;
+            font-family: Helvetica, sans-serif;
+            font-size: 1.6rem;
+            min-height: 100vh;
+            place-content: center;
+        }
+
+        .calendar {
+            background-color: #FFF;
+            border-radius: 0.8rem;
+            box-shadow: 0 0.8rem 1.6rem rgba(35, 131, 157, 0.2);
+            padding: 3.2rem;
+            margin-right: 85rem;
+            margin-left: 5rem;
+        }
+        .calendar__header {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            letter-spacing: 0.2rem;
+            padding: 0 0.4rem 1.2rem;
+            text-transform: uppercase;
+        }
+        .calendar__day-names {
+            border-bottom: 0.1rem solid #828889;
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 0.8rem;
+            padding: 0.8rem 0;
+        }
+        .calendar__day-name {
+            aspect-ratio: 1;
+            color: #828889;
+            font-weight: normal;
+            text-align: center;
+            width: 2.4rem;
+        }
+        .calendar__day_numbers {
+            display: flex;
+            flex-direction: column;
+        }
+        .calendar__day-numbers-row {
+            display: flex;
+            gap: 1.2rem;
+            padding: 0.6rem 0;
+        }
+        .calendar__day-numbers-row:first-child {
+            justify-content: flex-end;
+        }
+        .calendar__day-number {
+            align-content: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            color: #000;
+            display: flex;
+            line-height: 1.4;
+            text-align: center;
+            width: 2.4rem;
+        }
+        .calendar__day-number--current {
+            background-color: #23839D;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0.4rem #23839D;
+            color: #FFF;
+        }
+
+
+
     </style>
     <title>GoodGirls</title>
 
@@ -370,12 +452,77 @@
         </div>
     </div>
     @if(Auth::check() && Auth::user()->isAdmin)
-        <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
     @endif
 
 </nav>
 <section class="home">
-    <div class="text">Dashboard Sidebar</div>
+    <div class="text">Dashboard</div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Calendar Widget</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+    <div class="calendar">
+        <header class="calendar__header">
+            <div class="calendar__month"></div>
+            <div class="calendar__year"></div>
+        </header>
+        <div class="calendar__grid">
+            <div class="calendar__day-names">
+                <span class="calendar__day-name">S</span>
+                <span class="calendar__day-name">M</span>
+                <span class="calendar__day-name">T</span>
+                <span class="calendar__day-name">W</span>
+                <span class="calendar__day-name">T</span>
+                <span class="calendar__day-name">F</span>
+                <span class="calendar__day-name">S</span>
+            </div>
+            <div class="calendar__day-numbers"></div>
+        </div>
+    </div>
+    <script>
+        // month abbreviations
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        // get current date values
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth();
+        const currentDay = currentDate.getDate();
+
+        // set month and year
+        document.querySelector('.calendar__month').innerText = months[currentDate.getMonth()];
+        document.querySelector('.calendar__year').innerText = currentYear;
+
+        // create grid of days
+        let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        let week = document.createElement('div');
+        week.classList.add('calendar__day-numbers-row');
+
+        for (i = 1; i <= daysInMonth; i++) {
+            let day = document.createElement('span');
+            day.classList.add('calendar__day-number');
+            day.innerText = i;
+            (i == currentDay) && day.classList.add('calendar__day-number--current');
+            week.append(day);
+
+            if (new Date(currentYear, currentMonth, i).getDay() == 6 || i == daysInMonth) {
+                document.querySelector('.calendar__day-numbers').append(week);
+
+                if (i != daysInMonth) {
+                    week = document.createElement('div');
+                    week.classList.add('calendar__day-numbers-row');
+                }
+            }
+        }
+    </script>
+
+    </body>
+    </html>
 
 </section>
 <script>

@@ -63,3 +63,4 @@ Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->na
 //////Route::get('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updatematkul'])->name('update-matakuliah');
 ////Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah.update');
 ////
+Route::get('/polling-mahasiswa', 'PollingMahasiswaController@index')->name('polling-mahasiswa.index');

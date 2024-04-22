@@ -80,7 +80,7 @@
                     <th scope="col">Kode MK</th>
                     <th scope="col">Mata Kuliah</th>
                     <th scope="col">SKS</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col"> </th>
                 </tr>
                 </thead>
                 <tbody>

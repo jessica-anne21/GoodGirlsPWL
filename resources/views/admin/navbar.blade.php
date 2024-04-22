@@ -351,7 +351,7 @@
                     <span class="text nav-text">Logout</span>
                 </a>
             </li>
-            <li class="mode"> lala baong bikin males
+            <li class="mode">
                 <div class="sun-moon">
                     <i class='bx bx-moon icon moon'></i>
                     <i class='bx bx-sun icon sun'></i>

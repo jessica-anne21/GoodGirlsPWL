@@ -323,7 +323,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{{ route('polling-mahasiswa.index') }}">
                         <i class='bx bx-bell icon'></i>
                         <span class="text nav-text">Polling</span>
                     </a>

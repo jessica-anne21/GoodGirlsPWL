@@ -56,7 +56,7 @@ Route::post('/delete-matakuliah', [DataPollingController::class, 'delete'])->nam
 Route::post('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah');
 
 ////Route::post('/data-polling/delete', [DataPollingController::class, 'delete'])->name('data-polling.delete');
-Route::get('/view-course', 'DataPollingController@showViewCourse')->name('view-course.index');
+Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->name('view-course.index');
 //////Route::get('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updatematkul'])->name('update-matakuliah');
 ////Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah.update');
 ////

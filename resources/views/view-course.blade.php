@@ -11,10 +11,9 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: #649173;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #DBD5A4, #649173);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #DBD5A4, #649173); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+            background: #C9FFBF;
+            background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);
+            background: linear-gradient(to right, #FFAFBD, #C9FFBF);
         }
 
         .container {
@@ -90,14 +89,14 @@
                         <td>{{ $mk->Mata_Kuliah }}</td>
                         <td>{{ $mk->Jml_sks }}</td>
                         <td>
-                            <a href="{{ route('updatematkul', ['KodeMK' => $mk->Kode_MK]) }}" role="button" class="btn btn-primary btn-edit bi bi-pencil mr-2">Edit</a>
-                            <form method="POST" action="{{ route('data-polling.delete') }}" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                            <form action="{{ route('update-matakuliah', ['KodeMK' => $mk->Kode_MK]) }}" method="POST" style="display: inline;">
                                 @csrf
-                                <input type="hidden" name="kodeMk" value="{{ $mk->Kode_MK }}">
-                                <button type="submit" class="btn btn-danger btn-delete" title="Hapus">
-                                    <i class="bi bi-trash"></i> Hapus
-                                </button>
+                                @method('PUT')
+                                <button type="submit" class="btn btn-primary btn-edit bi bi-pencil mr-2">Edit</button>
                             </form>
+                            <button type="button" class="btn btn-danger btn-delete" onclick="konfirmasiHapus('{{ $mk->Kode_MK }}')">
+                                <i class="bi bi-trash"></i> Hapus
+                            </button>
                         </td>
                     </tr>
                 @endforeach
@@ -107,67 +106,7 @@
     </div>
 </div>
 <script>
-    {{--function editMatakuliah(kodeMk) {--}}
-    {{--    // Periksa apakah kodeMk tidak kosong atau tidak null--}}
-    {{--    if (kodeMk !== '' && kodeMk !== null) {--}}
-    {{--        // Mengarahkan pengguna ke halaman edit dengan menggunakan URL dinamis--}}
-    {{--        window.location.href = "{{ route('update-matakuliah', ['kodeMk' => '']) }}/" + kodeMk;--}}
-    {{--    } else {--}}
-    {{--        console.log('Kode MK tidak valid:', kodeMk);--}}
-    {{--        // Tambahkan logika atau tindakan lain sesuai kebutuhan jika kodeMk tidak valid--}}
-    {{--    }--}}
-    {{--}--}}
-    {{--// Fungsi untuk menangani klik tombol Hapus--}}
-    {{--function hapusMatakuliah(kodeMk) {--}}
-    {{--    // Di sini Anda bisa membuat permintaan Ajax untuk menghapus data berdasarkan kodeMk--}}
-    {{--    console.log('Hapus Kode MK:', kodeMk);--}}
-    {{--}--}}
-
-    // function editMatakuliah(Kode_MK) {
-    //     // Periksa apakah Kode_MK tidak kosong atau tidak null
-    //     if (Kode_MK !== '' && Kode_MK !== null) {
-    //         // Mengarahkan pengguna ke halaman edit dengan menggunakan URL dinamis
-    //         window.location.href = "updatematkul" + Kode_MK;
-    //     } else {
-    //         console.log('Kode MK tidak valid:', Kode_MK);
-    //         // Tambahkan logika atau tindakan lain sesuai kebutuhan jika Kode_MK tidak valid
-    //     }
-    // }
-    // // Fungsi untuk menangani klik tombol Hapus
-    // function hapusMatakuliah(Kode_MK) {
-    //     // Di sini Anda bisa membuat permintaan Ajax untuk menghapus data berdasarkan kodeMk
-    //     console.log('Hapus Kode MK:', Kode_MK);
-    // }
-
-    {{--// Mendapatkan semua tombol Edit pada tabel--}}
-    {{--const editButtons = document.querySelectorAll('.btn-edit');--}}
-
-    {{--// Menambahkan event listener untuk setiap tombol Edit--}}
-    {{--editButtons.forEach(button => {--}}
-    {{--    button.addEventListener('click', () => {--}}
-    {{--        const kodeMk = button.dataset.kodeMk; // Mendapatkan nilai data-kode-mk dari tombol--}}
-    {{--        editMatakuliah(kodeMk); // Panggil fungsi editMatakuliah dengan kodeMk yang dipilih--}}
-    {{--    });--}}
-    {{--});--}}
-    // Menambahkan event listener untuk setiap tombol Edit
-    editButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const Kode_MK = button.dataset.Kode_MK; // Mendapatkan nilai data-kode-mk dari tombol
-            editMatakuliah(Kode_MK); // Panggil fungsi editMatakuliah dengan kodeMk yang dipilih
-        });
-    });
-
-    // Mendapatkan semua tombol Hapus pada tabel
-    const deleteButtons = document.querySelectorAll('.btn-delete');
-
-    // Menambahkan event listener untuk setiap tombol Hapus
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const Kode_MK = button.dataset.Kode_MK; // Mendapatkan nilai data-kode-mk dari tombol
-            hapusMatakuliah(Kode_MK); // Panggil fungsi hapusMatakuliah dengan kodeMk yang dipilih
-        });
-    });
-    function konfirmasiHapus(Kode_MK) {
+    function hapusMatakuliah(Kode_MK) {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -178,7 +117,6 @@
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                // Panggil fungsi Ajax untuk menghapus data
                 hapusData(Kode_MK);
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire({

@@ -13,7 +13,7 @@ class PollingMahasiswaController extends Controller
      */
     public function index()
     {
-        return view('polling-mahasiswa');
+        return view('mahasiswa/polling-mahasiswa');
     }
 
     /**

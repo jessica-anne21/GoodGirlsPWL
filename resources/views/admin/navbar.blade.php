@@ -428,11 +428,14 @@
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="#">
+                <a href="#" onclick="logoutAndRedirect()">
                     <i class='bx bx-log-out icon' ></i>
                     <span class="text nav-text">Logout</span>
                 </a>
             </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
             <li class="mode">
                 <div class="sun-moon">
                     <i class='bx bx-moon icon moon'></i>
@@ -552,6 +555,10 @@
         event.preventDefault();
         this.submit();
     });
+    function logoutAndRedirect() {
+        document.getElementById('logout-form').submit();
+        window.location.href = "/";
+    }
 </script>
 
 

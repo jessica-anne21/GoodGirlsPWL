@@ -48,6 +48,7 @@ class DataPollingController extends Controller
         }
     }
 
+
     public function updatematkul(Matakuliah $KodeMK)
     {
         return view('update-matakuliah', [
@@ -55,13 +56,13 @@ class DataPollingController extends Controller
         ]);
     }
 
+    // Memproses update data matakuliah
     public function updateMatakuliah(Request $request, $kodeMk)
     {
         $validatedData = $request->validate([
             'Mata_Kuliah' => 'required|max:100',
             'Jml_sks' => 'required|numeric'
         ]);
-
         $matakuliah = Matakuliah::where('Kode_MK', $kodeMk)->first();
         if ($matakuliah) {
             $matakuliah->Mata_Kuliah = $validatedData['Mata_Kuliah'];

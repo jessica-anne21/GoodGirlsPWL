@@ -2,29 +2,26 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DataPollingController;
+use App\Http\Controllers\PollingMahasiswaController;
 
 
-// Rute untuk menampilkan halaman welcome
-Route::get('/', function () {
-    return view('welcome');
-});
 
-// Rute untuk menampilkan halaman login
+Route::redirect('/', '/login');
+
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-// Rute untuk melakukan proses login
+
 Route::post('/login', [LoginController::class, 'login']);
-// Rute untuk proses logout
+
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-// Di dalam file routes/web.php
+
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password');
 })->name('forgot-password');
 
-// Di dalam file routes/web.php
 Route::get('/reset-password', function () {
     return view('auth.reset-password');
 })->name('reset-password');
@@ -45,22 +42,11 @@ Route::get('/data-polling', function () {
 
 
 
-// Rute untuk menampilkan halaman data-polling (form)
-//Route::get('/data-polling', 'DataPollingController@index')->name('data-polling.index');
-
 Route::get('/data-polling', [DataPollingController::class, 'index'])->name('data-polling.index');
 Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
+Route::get('/update-matakuliah/{KodeMK}', [DataPollingController::class, 'update-matakuliah'])->name('updatematkul');
+Route::delete('/delete-matakuliah/{kodeMk}', [DataPollingController::class, 'delete'])->name('data-polling.delete');
+Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah');
 Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->name('view-course.index');
-Route::get('/updatematkul/{KodeMK}', [DataPollingController::class, 'updatematkul'])->name('updatematkul');
-Route::post('/delete-matakuliah', [DataPollingController::class, 'delete'])->name('data-polling.delete');
-Route::post('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah');
-
-
-Route::get('/polling-mahasiswa', 'PollingMahasiswaController@index')->name('polling-mahasiswa.index');
-
-////Route::post('/data-polling/delete', [DataPollingController::class, 'delete'])->name('data-polling.delete');
-Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->name('view-course.index');
-//////Route::get('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updatematkul'])->name('update-matakuliah');
-////Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah.update');
-////
-Route::get('/polling-mahasiswa', 'PollingMahasiswaController@index')->name('polling-mahasiswa.index');
+Route::get('/polling-mahasiswa', [PollingMahasiswaController::class, 'index'])->name('polling-mahasiswa.index');
+Route::post('/polling-mahasiswa/process', [PollingMahasiswaController::class, 'processPoll'])->name('polling-mahasiswa.process');

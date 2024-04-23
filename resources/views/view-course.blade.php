@@ -89,12 +89,8 @@
                         <td>{{ $mk->Mata_Kuliah }}</td>
                         <td>{{ $mk->Jml_sks }}</td>
                         <td>
-                            <form action="{{ route('update-matakuliah', ['KodeMK' => $mk->Kode_MK]) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="btn btn-primary btn-edit bi bi-pencil mr-2">Edit</button>
-                            </form>
-                            <button type="button" class="btn btn-danger btn-delete" onclick="konfirmasiHapus('{{ $mk->Kode_MK }}')">
+                            <a href="{{ route('updatematkul', ['KodeMK' => $mk-> Kode_MK]) }}" type="button" class="btn btn-primary btn-edit bi bi-pencil mr-2">Edit</a>
+                            <button type="button" class="btn btn-danger btn-delete" onclick="hapusMatakuliah('{{ $mk->Kode_MK }}')">
                                 <i class="bi bi-trash"></i> Hapus
                             </button>
                         </td>
@@ -105,6 +101,9 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function hapusMatakuliah(Kode_MK) {
         Swal.fire({
@@ -131,7 +130,7 @@
     function hapusData(Kode_MK) {
         $.ajax({
             type: "POST",
-            url: "{{ route('data-polling.delete') }}",
+            url: "{{ route('data-polling.delete',['KodeMK' => $mk-> Kode_MK]) }}",
             data: {
                 _token: "{{ csrf_token() }}",
                 kodeMk: Kode_MK
@@ -163,8 +162,6 @@
         });
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

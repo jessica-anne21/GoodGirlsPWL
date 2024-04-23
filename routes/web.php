@@ -44,9 +44,9 @@ Route::get('/data-polling', function () {
 
 Route::get('/data-polling', [DataPollingController::class, 'index'])->name('data-polling.index');
 Route::post('/data-polling', [DataPollingController::class, 'store'])->name('data-polling.store');
-Route::get('/update-matakuliah/{KodeMK}', [DataPollingController::class, 'update-matakuliah'])->name('updatematkul');
-Route::delete('/delete-matakuliah/{kodeMk}', [DataPollingController::class, 'delete'])->name('data-polling.delete');
-Route::put('/update-matakuliah/{kodeMk}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah');
+Route::get('/update-matakuliah/{KodeMK}', [DataPollingController::class, 'updatematkul'])->name('updatematkul');
+Route::delete('/delete-matakuliah/{KodeMK}', [DataPollingController::class, 'delete'])->name('data-polling.delete');
+Route::put('/update-matakuliah/{KodeMK}', [DataPollingController::class, 'updateMatakuliah'])->name('update-matakuliah');
 Route::get('/view-course', [DataPollingController::class, 'showViewCourse'])->name('view-course.index');
 Route::get('/polling-mahasiswa', [PollingMahasiswaController::class, 'index'])->name('polling-mahasiswa.index');
 Route::post('/polling-mahasiswa/process', [PollingMahasiswaController::class, 'processPoll'])->name('polling-mahasiswa.process');
